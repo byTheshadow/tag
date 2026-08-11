@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Hub - 提示词仓库</title>
+    <style>
+        /* 1. 变量与极简黑白美学风格 */
+        :root {
+            --bg-color: #0a0b0d;
+            --sidebar-bg: rgba(18, 19, 22, 0.8);
+            --card-bg: #131518;
+            --card-hover: #191c21;
+            --text-main: #f5f5f7;
+            --text-muted: #86868b;
+            --accent: #ffffff;
+            --border-color: #22252a;
+            --border-hover: #3a3f47;
+            --success: #30d158;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* 2. 极简黑白加载动画 */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader-spinner {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s cubic-bezier(0.6, 0.2, 0.2, 0.8) infinite;
+        }
+
+        .loader-text {
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* 3. 布局设计 */
+        /* 侧边栏 */
+        aside {
+            width: 260px;
+            background: var(--sidebar-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-right: 1px solid var(--border-color);
+            position: fixed;
+            height: 100vh;
+            padding: 2.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            padding-left: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .nav-item {
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .nav-item.active {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* 右侧内容区 */
+        main {
+            margin-left: 260px;
+            flex: 1;
+            padding: 3rem;
+            max-width: 1200px;
+            width: calc(100% - 260px);
+        }
+
+        /* 搜索框设计 */
+        .header-search {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(to bottom, var(--bg-color) 70%, transparent);
+            padding-bottom: 2rem;
+            margin-bottom: 1rem;
+            z-index: 90;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-size: 15px;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: var(--border-hover);
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.05);
+        }
+
+        /* 子分类区块 */
+        .category-section {
+            margin-bottom: 3.5rem;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .subcategory-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+            border-left: 2px solid var(--accent);
+            padding-left: 10px;
+        }
+
+        /* 卡片网格 */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* 提示词卡片 */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+            background: var(--card-hover);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .card-tag {
+            font-size: 10px;
+            background: rgba(255,255,255,0.06);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .card-prompt-wrapper {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            position: relative;
+        }
+
+        .card-prompt {
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            font-size: 13px;
+            color: var(--text-muted);
+            word-break: break-all;
+            line-height: 1.5;
+            max-height: 100px;
+            overflow-y: auto;
+        }
+
+        .card-note {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            background: rgba(255,255,255,0.01);
+            padding: 8px 10px;
+            border-left: 2px solid rgba(255,255,255,0.1);
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* 复制按钮设计 */
+        .copy-btn {
+            background: var(--accent);
+            color: var(--bg-color);
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            align-self: flex-end;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .copy-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .copy-btn.copied {
+            background: var(--success);
+            color: #ffffff;
+        }
+
+        /* 渐入动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            aside {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 1.5rem;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+            main {
+                margin-left: 0;
+                width: 100%;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 极简加载页 -->
+    <div id="loader">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">Loading Library</div>
+    </div>
+
+    <!-- 侧边栏分类 -->
+    <aside>
+        <div class="logo">PROMPT HUB</div>
+        <nav id="categories-nav">
+            <!-- 由 JS 动态渲染 -->
+        </nav>
+    </aside>
+
+    <!-- 右侧主体内容 -->
+    <main>
+        <div class="header-search">
+            <input type="text" id="search" class="search-input" placeholder="输入关键词、小类、或提示词内容进行全局搜索...">
+        </div>
+
+        <div id="content-area">
+            <!-- 由 JS 动态渲染 -->
+        </div>
+    </main>
+
+    <script>
+        let promptData = {};
+        let currentTab = '';
+
+        // 1. 初始化，加载数据
+        window.addEventListener('DOMContentLoaded', () => {
+            fetch('data.json')
+                .then(response => response.json())
+                .then(data => {
+                    promptData = data;
+                    const keys = Object.keys(data);
+                    currentTab = keys[0]; // 默认选中第一个分类
+                    
+                    renderSidebar(keys);
+                    renderContent();
+                    
+                    // 模拟极简加载动画至少显示0.6秒，平滑消失
+                    setTimeout(() => {
+                        const loader = document.getElementById('loader');
+                        loader.style.opacity = '0';
+                        setTimeout(() => loader.style.display = 'none', 600);
+                    }, 600);
+                })
+                .catch(error => {
+                    console.error("加载数据失败，请检查 data.json 格式是否有误", error);
+                    document.querySelector('.loader-text').innerText = "加载失败，请检查配置文件";
+                });
+        });
+
+        // 2. 渲染侧边栏
+        function renderSidebar(categories) {
+            const nav = document.getElementById('categories-nav');
+            nav.innerHTML = categories.map(cat => `
+                <div class="nav-item ${cat === currentTab ? 'active' : ''}" onclick="switchTab('${cat}')">
+                    ${cat}
+                </div>
+            `).join('');
+        }
+
+        // 切换大类
+        function switchTab(category) {
+            currentTab = category;
+            
+            // 更新侧边栏样式
+            document.querySelectorAll('.nav-item').forEach(item => {
+                if (item.innerText.trim() === category) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+
+            // 清空搜索框并渲染
+            document.getElementById('search').value = '';
+            renderContent();
+        }
+
+        // 3. 渲染主内容区域
+        function renderContent(searchQuery = '') {
+            const container = document.getElementById('content-area');
+            container.innerHTML = '';
+
+            const activeData = promptData[currentTab];
+            if (!activeData && !searchQuery) return;
+
+            // 搜索逻辑
+            if (searchQuery) {
+                renderSearchResults(searchQuery);
+                return;
+            }
+
+            // 正常渲染小分类及卡片
+            for (const [subCat, cards] of Object.entries(activeData)) {
+                if (cards.length === 0) continue;
+
+                const section = document.createElement('section');
+                section.className = 'category-section';
+
+                section.innerHTML = `
+                    <h3 class="subcategory-title">${subCat}</h3>
+                    <div class="cards-grid">
+                        ${cards.map(card => createCardHTML(card)).join('')}
+                    </div>
+                `;
+                container.appendChild(section);
+            }
+        }
+
+        // 4. 全局搜索渲染逻辑
+        function renderSearchResults(query) {
+            const container = document.getElementById('content-area');
+            const results = [];
+            const q = query.toLowerCase();
+
+            // 遍历所有大类、小类寻找匹配项
+            for (const [mainCat, subCats] of Object.entries(promptData)) {
+                for (const [subCat, cards] of Object.entries(subCats)) {
+                    cards.forEach(card => {
+                        const inTitle = card.title.toLowerCase().includes(q);
+                        const inPrompt = card.prompt.toLowerCase().includes(q);
+                        const inNote = card.note.toLowerCase().includes(q);
+                        const inSub = subCat.toLowerCase().includes(q);
+
+                        if (inTitle || inPrompt || inNote || inSub) {
+                            results.push({ ...card, mainCat, subCat });
+                        }
+                    });
+                }
+            }
+
+            if (results.length === 0) {
+                container.innerHTML = `<div style="text-align: center; color: var(--text-muted); margin-top: 4rem;">无相关提示词，换个词搜搜看</div>`;
+                return;
+            }
+
+            // 渲染搜索结果网格
+            const section = document.createElement('section');
+            section.className = 'category-section';
+            section.innerHTML = `
+                <h3 class="subcategory-title">搜索结果 (${results.length})</h3>
+                <div class="cards-grid">
+                    ${results.map(card => createCardHTML(card, true)).join('')}
+                </div>
+            `;
+            container.appendChild(section);
+        }
+
+        // 5. 生成卡片的 HTML
+        function createCardHTML(card, showBreadcrumb = false) {
+            const tagHTML = showBreadcrumb ? `<span class="card-tag">${card.mainCat} · ${card.subCat}</span>` : '';
+            return `
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">${card.title}</span>
+                        ${tagHTML}
+                    </div>
+                    <div class="card-prompt-wrapper">
+                        <div class="card-prompt">${escapeHTML(card.prompt)}</div>
+                    </div>
+                    ${card.note ? `<div class="card-note">${escapeHTML(card.note)}</div>` : ''}
+                    <button class="copy-btn" onclick="copyPrompt(this, \`${escapeJSQuote(card.prompt)}\`)">
+                        复制
+                    </button>
+                </div>
+            `;
+        }
+
+        // 6. 一键复制功能 + 动画反馈
+        function copyPrompt(button, text) {
+            navigator.clipboard.writeText(text).then(() => {
+                button.innerText = '已复制！';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.innerText = '复制';
+                    button.classList.remove('copied');
+                }, 1500);
+            }).catch(err => {
+                console.error('复制失败: ', err);
+            });
+        }
+
+        // 辅助防注入函数
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
+        }
+        function escapeJSQuote(str) {
+            return str.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\$/g, '\\$');
+        }
+
+        // 7. 绑定搜索输入事件
+        document.getElementById('search').addEventListener('input', (e) => {
+            renderContent(e.target.value.trim());
+        });
+    </script>
+</body>
+</html>
