@@ -1,0 +1,361 @@
+{
+  "GPT": {
+    "基础画质参数": [
+      {
+        "title": "真人古风通用底词",
+        "prompt": "8K ultra-high-definition cinematic quality, widescreen cinematic aspect ratio, realistic ancient Chinese style, professional film photography quality, ARRI Alexa 65 cinema camera texture, 50mm medium focal length prime lens, f/2.8 shallow depth of field, delicate natural film grain, authentic skin texture, preserving fine pores and soft vellus hair, gentle natural skin smoothing, distinct hair strands, clear clothing fabric texture, embroidery patterns, carved silver ornaments, gem and metal luster naturally realistic, accurate human bone structure, limb proportions, hand structure naturally precise, clear main subject, cinematic composition, realistic lighting and shadows, no watermarks, no subtitles, no text, no logos.",
+        "note": "真人古风视频/图片通用基础质感底词，适用于所有古装场景，强调真实皮肤纹理与电影级质感"
+      },
+      {
+        "title": "摄影机与镜头参数",
+        "prompt": "Camera: ARRI Alexa 65 cinematic photography texture / Alternative: RED V-Raptor 8K, Sony Venice 2, RED Komodo 6K. Lens: 50mm medium focal length prime lens, f/2.8 shallow depth of field / Alternative: 35mm wide-angle environmental narrative, 85mm telephoto portrait close-up, 24mm ultra-wide-angle large scene. Technical standards: 24fps theatrical frame rate, 2.39:1 widescreen composition, no surreal distortion throughout, no extra limbs, no穿帮, character identity and appearance remain consistent.",
+        "note": "可选的专业电影摄影机与镜头参数，用于强化画面专业感与电影质感"
+      },
+      {
+        "title": "胶片质感参数",
+        "prompt": "KODAK PORTRA 400 film texture, delicate natural film grain, grain level approximately 15%.",
+        "note": "胶片颗粒感参数，营造复古高级质感"
+      },
+      {
+        "title": "UE5游戏引擎质感",
+        "prompt": "UE5 high-precision realistic game character texture, real-life proportions, realistic skin and hair, clear facial structure, clothing leather, metal, fabric textures realistic, ambient occlusion, cinematic dynamic lighting, cold and warm contrast, sharp details, strong three-dimensional spatial sense, reject flat feel.",
+        "note": "适用于需要游戏CG级别写实质感的场景，如打戏、法术场景等"
+      }
+    ],
+    "人物角色生成": [
+      {
+        "title": "角色基础信息模板",
+        "prompt": "Character identity: {identity}, Age group: {teenager 16-20 / young adult 22-28 / mature 30+}, Gender: {gender}, Regional characteristics: {Chinese Eastern / Japanese / Hong Kong style / Miao / Jianghu / Immortal sect, etc.}, Body proportions: {slender / broad shoulders narrow waist / petite flexible / tall and upright}, Personality: {calm and restrained / wild and violent / gentle and doting / cunning and dangerous, etc.}, Temperament: {cold and aloof / bright and radiant / sickly obsessive / noble / youthful / oppressive, etc.}",
+        "note": "角色生成的基础框架，填入具体信息后可生成完整人设"
+      },
+      {
+        "title": "五官记忆点模板",
+        "prompt": "Face shape: {narrow long face / oval face / small V-face / round face / square-round face / delicate short face}, Bone structure: {clear jawline / slightly prominent cheekbones / flat mid-face / grand bone structure / soft contours}, Eyebrow shape: {natural wild brows / straight brows / sword brows / distant mountain brows / slightly raised brows / drooping brows}, Eye type: {phoenix eyes / almond eyes / peach blossom eyes / fox eyes / slender phoenix eyes / round eyes / single eyelid / double eyelid}, Eye expression: {cold and distant / gentle and affectionate / sharp and dangerous / moist and aggrieved / bright and lively / firm and restrained}, Nose type: {high straight nose / low bridge natural nose / slightly hooked nose / round petite nose / narrow bridge}, Lip shape: {thin lips / thick lips / M-shaped lips / pouty lips / smiling lips / clear lip peaks}, Facial memory points: {tear mole / lip corner mole / glabellar mole / freckles / reddish nose wings / slight asymmetry}",
+        "note": "五官细节库，每个角色建议选择1-2个独特记忆点，避免五官全部特殊化"
+      },
+      {
+        "title": "皮肤与年龄质感",
+        "prompt": "Skin tone: {cool-toned fair skin / warm-toned natural white / yellow-white natural skin tone / wheat cool-brown skin / light honey skin / transparent cool-toned skin / warm moist skin / natural healthy skin tone}, Skin texture: {matte velvety texture / creamy glow / natural slight pores / delicate without excessive smoothing / natural skin vellus hair / slight film grain / clear transparent skin / natural local shine / clear skin texture}, Controllable micro-imperfections: {faint tear mole under eyes / small mole at lip corner / faint mole between brows / light freckles on cheeks / slightly red nose wings / small mole under jaw / faint spots / uneven local skin tone / slight nasolabial folds / fine lines under eyes / slight dark circles / slight left-right facial asymmetry}. Age characteristics: Teenager (16-20 years): full face, slight baby fat, clean and clear eyes and brows, bone structure not fully developed, transparent and delicate skin, soft facial lines, fresh contours, youthful and relaxed demeanor. Young adult (22-28 years): developed bone structure, tight skin-to-flesh fit, three-dimensional and sharp features, clean facial lines, no excess fat, clear jawline, composed demeanor, mature or cold temperament. Mature (30+ years): tight and sharp facial lines, slight facial texture, calm eyes and brows, grand bone structure, gentle and restrained demeanor, mature and moist temperament, experienced presence.",
+        "note": "皮肤、肤色与年龄阶段质感描述，微瑕疵每次只选1-2个作为固定记忆点"
+      }
+    ],
+    "气质与神态": [
+      {
+        "title": "气质分类库",
+        "prompt": "Cold and aloof: indifferent and distant, calm and self-possessed, restrained gaze, keep strangers at bay. Gentle and healing: relaxed and soft, warm eyes, relaxed brows and eyes, faint smile. Bright and grand: bold aura, sharp eyes and brows, open features, confident and generous. Fragile and broken: hazy gaze, red-rimmed eyes, melancholic eyes, emotionally restrained. Youthful salt style: relaxed and unrestrained, clean and fresh, clear gaze, youthful spirit. Vintage lazy: tipsy hazy, weary expression, relaxed and lazy, gentle vintage. Alluring and dangerous: smiling eyes, slightly raised brow tips, enigmatic lip corners, mysterious and captivating. Domineering and oppressive: lowered brows and eyes, tight jaw, strong aura, sense of control.",
+        "note": "8种主流人物气质分类，可根据角色性格选择对应气质描述"
+      },
+      {
+        "title": "神态拆解公式",
+        "prompt": "Facial emotion = mouth state + eye state + facial state. Example: Corners of mouth naturally pressed down, lip line straight; eyes indifferent and distant, gaze slightly averted; facial muscles relaxed, jawline clear, emotions restrained, presenting a cold and aloof demeanor.",
+        "note": "表情生成核心公式，将抽象情绪拆解为嘴角、眼部、面部三部分具体描述"
+      },
+      {
+        "title": "喜悦明媚神态",
+        "prompt": "Corners of mouth lifted, revealing neat teeth, full apple muscles, eyes curved into crescents, bright pupils, relaxed face, head slightly raised, body state light and cheerful.",
+        "note": "喜悦、开心、明媚笑容的标准表情描述"
+      },
+      {
+        "title": "心动羞涩神态",
+        "prompt": "Corners of mouth unconsciously slightly lifted, eyes frantically looking away, eyelids lightly trembling, ear tips flushed, cheeks slightly red, head gently lowered, fingers unconsciously tightening.",
+        "note": "暧昧、害羞、心动时刻的微表情与肢体联动"
+      },
+      {
+        "title": "隐忍落泪神态",
+        "prompt": "Lips tightly pressed, eyes red-rimmed, tears gathering but forcibly held back, gaze painful yet restrained, jawline tense, shoulders slightly drooped, breathing suppressed.",
+        "note": "隐忍、委屈、强忍泪水的悲伤情绪表达"
+      },
+      {
+        "title": "愤怒爆发神态",
+        "prompt": "Brows furrowed, eyelids wide open, pupils constricted, nostrils flared, corners of mouth tight, jaw clenched, facial muscles stiff, body leaning forward, presenting strong oppressive presence.",
+        "note": "愤怒、爆发、对峙时的强烈情绪表现"
+      },
+      {
+        "title": "惊讶震惊神态",
+        "prompt": "Eyebrows raised, eyes wide open, pupils dilated, lips slightly parted in an 'O' shape, body instantly frozen, hands stopped at chest, eyes panicked and disbelieving.",
+        "note": "震惊、意外、难以置信时的瞬间反应表情"
+      },
+      {
+        "title": "清冷疏离神态",
+        "prompt": "Mouth straight, brows relaxed, eyes indifferent, eyelids half-lowered, jaw slightly tightened, face devoid of excess expression, presenting a cold and aloof aura.",
+        "note": "高冷、疏离、清冷禁欲系角色专用神态"
+      }
+    ],
+    "情绪触发模块": [
+      {
+        "title": "情绪生成公式",
+        "prompt": "[Time / Location / Event Background] + [Character's Inner Activity / Emotional Trigger] + [Core Emotion] + [Micro-expressions] + [Body Coordination]",
+        "note": "情绪场景生成的核心公式，用于给AI提供前情摘要和情绪依据"
+      },
+      {
+        "title": "喜悦类情境触发",
+        "prompt": "When receiving an unexpected surprise, when making eye contact with someone you like, the moment you receive good news.",
+        "note": "适用于触发喜悦、开心、兴奋情绪的场景设定"
+      },
+      {
+        "title": "悲伤类情境触发",
+        "prompt": "When facing parting, when recalling sad past events, when misunderstood but unable to explain.",
+        "note": "适用于触发悲伤、落寞、委屈情绪的场景设定"
+      },
+      {
+        "title": "愤怒类情境触发",
+        "prompt": "When encountering injustice, when discovering betrayal, when publicly humiliated.",
+        "note": "适用于触发愤怒、不甘、对峙情绪的场景设定"
+      },
+      {
+        "title": "惊讶类情境触发",
+        "prompt": "When hearing shocking truth, when receiving unimaginable news, when suddenly called upon.",
+        "note": "适用于触发惊讶、震惊、难以置信情绪的场景设定"
+      },
+      {
+        "title": "复杂情绪情境触发",
+        "prompt": "Pretending to be composed in important occasions, forcing a smile when facing an ex, appearing calm on the surface while internally collapsing.",
+        "note": "适用于触发复杂、矛盾、口是心非情绪的场景设定"
+      }
+    ],
+    "古风甜宠短剧": [
+      {
+        "title": "甜宠剧情核心公式",
+        "prompt": "Character identity + extreme character contrast + identity suspense hook + high-frequency sweet moments + conflict progression + emotional reversal + ending suspense",
+        "note": "古风甜宠短剧的核心剧情设计公式，用于快速构建高糖剧情"
+      },
+      {
+        "title": "甜宠剧情通用提示词",
+        "prompt": "Please expand into an ancient Chinese romance short drama based on the character settings provided by the user. Requirements: 1. Strengthen extreme character contrast, such as appearing cold on the surface but extremely protective in reality; appearing frail but actually having high combat skills; appearing as a playboy but actually having a noble hidden identity. 2. Set identity suspense hooks, revealing only detail clues in the early stages without directly unveiling the truth. 3. Add clear sweet moments to each scene, including protectiveness, favoritism, jealousy, being verbally harsh but kind-hearted, secret protection, physical distance narrowing, exclusive terms of address, attentive care to details, misunderstanding reversals, etc. 4. Sweet moments must be embedded in plot conflicts, not forcibly added outside the narrative. 5. Control information density, each segment contains at least one effective progression: relationship advancement, secret clues, conflict escalation, or emotional change. 6. Set reversals or suspense at the end to drive the next scene. 7. Maintain ancient Chinese context, unified character language style, avoid modern internet slang.",
+        "note": "用于让GPT自动生成古风甜宠短剧剧本的完整提示词"
+      },
+      {
+        "title": "单场戏设计模板",
+        "prompt": "Scene location: {location}, Time atmosphere: {daytime / dusk / deep night / rainy night / snowy night}, Characters present: {characters}, Surface objective: {what the character is doing}, Hidden objective: {what the character really wants}, Conflict: {obstacle or misunderstanding}, Sweet moment: {protectiveness / jealousy / favoritism / ambiguity / protection}, Identity clue: {detail that can be picked up later}, Ending hook: {reversal / secret exposure / crisis emergence}",
+        "note": "单场戏快速设计模板，填入要素即可生成完整场景描述"
+      }
+    ],
+    "角色视图海报": [
+      {
+        "title": "角色视图海报完整提示词",
+        "prompt": "8K ultra-high-definition refined realistic ancient Chinese character poster, widescreen horizontal format, professional studio photography texture, globally clear details; purely realistic live-action unified texture, strictly avoid anime, hand-drawn illustration, 3D digital humans, silicone wax figure effects. Preserve authentic skin texture, gentle natural skin smoothing, hair strands, Miao embroidery patterns, silver ornament metals, clothing fabric luster and texture sharply distinct, limb and hand structure naturally accurate, overall presenting premium commercial portrait retouching texture. Character identity: {identity}, Body proportions: {body and proportions}, Temperament: {temperament}, Hairstyle and accessories: {hairstyle and accessories}, Clothing style: {style, color, fabric, patterns}, Makeup details: {foundation, brows and eyes, lip makeup, forehead ornaments}, Composition and lighting: {composition and lighting}. Horizontal split-screen composition: left side features character's frontal face close-up, focusing on facial features, makeup details, and forehead ornament refinement; right side features character's full-body standing three-view (front, side, back) evenly arranged, strictly adhering to approximately 9-head-tall proportions, limbs naturally extended, hands complete and regular, comprehensively displaying hairstyle, clothing, and silver ornaments from all angles. Pure black unified background, warm-toned layered lighting, frontal soft light, 45° side light, side-back hair light, back contour light, silver ornaments, gems and lip surface with local highlights, warm-toned mysterious soft light filter, soft focus shallow depth of field, atmosphere enigmatic and bright, mysterious and premium. No watermarks, no text, no logos.",
+        "note": "用于生成横屏分栏的角色海报，左侧特写+右侧三视图，适合角色卡设计"
+      }
+    ],
+    "四种主流风格": [
+      {
+        "title": "妖冶阴柔风",
+        "prompt": "CG realistic character texture, alluring and androgynous Eastern aesthetics, cold fair skin, realistic skin texture, narrow eye shape, slightly upturned eye corners, sharp and seductive eyes and brows, moist and distinct hair strands, dark luxurious clothing, metal and gemstone accessories, low-saturation cool tones, dark and eerie atmosphere, side backlighting, contour lighting, mysterious, dangerous, captivating.",
+        "note": "适合妖冶、危险、神秘感角色，强调阴柔美与诡异氛围"
+      },
+      {
+        "title": "UE5写实游戏风",
+        "prompt": "UE5 high-precision realistic game character texture, real-life proportions, realistic skin and hair, clear facial structure, clothing leather, metal, fabric materials realistic, ambient occlusion, cinematic dynamic lighting, cold-warm contrast, sharp details, strong three-dimensional spatial sense, reject flat feel.",
+        "note": "适合游戏CG级写实质感，打戏、法术等高动态场景推荐"
+      },
+      {
+        "title": "3D国漫风",
+        "prompt": "New Chinese-style 3D animation character texture, blending Eastern classical aesthetics with modern animation visuals, delicate and soft skin texture, Eastern facial proportions, exquisite hair strands, magnificent ancient Chinese clothing, fine embroidery and silver ornaments, elegant colors, soft and transparent lighting, combining realistic details with animation expressiveness.",
+        "note": "适合新中式国漫风格，兼具写实与动画美感"
+      },
+      {
+        "title": "真人写实风",
+        "prompt": "Real-life ancient Chinese portrait photography, 8K ultra-high-definition cinematic quality, realistic skin texture and natural pores, clear facial details, natural hair, realistic clothing fabric, soft natural lighting, slight film grain, shallow depth of field, character with breathing sensation and vitality, clean and transparent image, reject AI plastic feel.",
+        "note": "纯真人实拍风格，强调真实生命力与自然质感"
+      }
+    ],
+    "AI打戏动作": [
+      {
+        "title": "真人打戏通用底词",
+        "prompt": "8K ultra-high-definition refined realistic ancient Chinese style texture, widescreen cinematic aspect ratio, globally clear details, cinematic photography combined with top-tier game CG rendering texture. Design combat style based on character personality: calm and precise, wild and violent, agile and cunning, defensive counter, domineering suppression. Actions conform to human biomechanics and physics, clear spatial relationships, fully utilizing terrain, elevation differences, and spatial depth. Short charge followed by instant explosive power, one move connects to the next, continuous fluid actions, with realistic weight, speed, impact force, hit feedback, and parry feedback. Display body center of gravity shifts, footwork force generation, weapon inertia, clothing and hair dynamics, dust scattering, flying rocks, sparks, and energy shockwaves.",
+        "note": "真人打戏的基础质感词，强调物理规律、连续动作与打击反馈"
+      },
+      {
+        "title": "打戏镜头与动作调度",
+        "prompt": "Incorporate rapid push-in, lateral tracking, low-angle upward shots, orbiting camera, attack-following shots, dive, ascent, close-range weaving, partial slow motion, motion blur, speed stretching, freeze on impact moment. Motion blur only applied to high-speed moving parts, character faces, key weapons, and main action nodes remain clear. Prohibit abrupt cuts, action jumps, teleportation, zero-gravity floating, and chaotic attack trajectories.",
+        "note": "打戏镜头运动与运动模糊使用规范，避免动作逻辑混乱"
+      },
+      {
+        "title": "仙侠法术动作模板",
+        "prompt": "Character briefly charges, spiritual energy gathering in palm, weapon, eyes, or body core, light particles flowing along meridians, weapon patterns, or magic arrays. After charging completes, instantly explodes, energy spreading along attack direction, colliding, rebounding, or exploding. Golden, silver-white spiritual energy particles forming light bands, light rings, magic arrays, energy shockwaves, and particle trails, illuminating character's skin, clothing, weapons, and environment. Shockwaves push clouds, dust, rocks, leaves, clothing hems, and long hair; all effects produce realistic physical interactions with the environment.",
+        "note": "仙侠、魔法类法术特效动作标准描述，强调能量流动与物理互动"
+      },
+      {
+        "title": "仙侠动作名称库",
+        "prompt": "Breaking Mountain Descent: high-altitude dive, vertical drop, sword force breaking mountain, impact ground, flying rocks. Double Seal Strike: hands forming seals, spiritual energy converging, seals overlapping, golden runes, energy explosion. Sword Energy Heart Pierce: long sword thrust, sword energy penetrating, linear attack, sword light explosion, piercing target. Spirit Suppression Seal: massive magic array, golden runes, spatial seal, spiritual energy suppression, array convergence. Demon-Subduing Strike: high-altitude drop, sword force oppressing, heavy ground strike, area explosion. Cloud Flash Position: rapid flash, afterimage movement, agile displacement, instant position change. Sword Control Rotation: sword flying control, orbiting rotation, sword energy spreading, multi-angle attack. Talisman Bind Body: talismans scattering, golden chains, entangling restraint, spell seal. Sword Curtain Defense: sword energy forming curtain, continuous parry, attack rebound, layered defense. Energy Pull Throw: borrowing force to pull, aerial flip, restraining target, heavy throw landing.",
+        "note": "仙侠类常用动作名称库，可直接填入角色动作设计"
+      }
+    ],
+    "AI运镜系统": [
+      {
+        "title": "固定静止镜头",
+        "prompt": "Full-scene fixed position, lens completely stationary throughout, stable and regular frame, completely capturing character actions and scene environment, no lens displacement, push-pull shake, suitable for dialogue, confrontation, static atmospheric shots, clean and stable frame. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "静态构图专用，适合对话、静态氛围镜头"
+      },
+      {
+        "title": "缓慢推镜（聚焦人物）",
+        "prompt": "Lens uniformly and slowly pushes forward, smoothly transitioning from full shot to medium close-up, focusing on character subject, weakening background environment, highlighting character demeanor and delicate actions, suitable for lyrical, heartfelt, quiet dialogue scenes. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "抒情、走心场景专用，强调情绪细节"
+      },
+      {
+        "title": "缓慢拉镜（开阔氛围）",
+        "prompt": "Lens uniformly and slowly pulls back, gradually pulling from character close-up to full shot or wide shot, progressively revealing complete environment, frame layers gradually expanding, smooth and gentle movement, evoking loneliness, vastness, release, melancholy light atmosphere. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "适合表现孤独、落寞、辽阔场景"
+      },
+      {
+        "title": "水平横移镜（双人对话）",
+        "prompt": "Lens moves horizontally and slowly in parallel, following character positions smoothly, symmetrical composition, balanced and fluid frame, completely presenting two-person interaction and entire dialogue process, no lens shake or offset, suitable for two-person confrontation, daily interaction shots. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "双人对话、互动场景专用"
+      },
+      {
+        "title": "垂直升降镜（氛围感）",
+        "prompt": "Lens uniformly and slowly ascends or descends vertically, low-angle upward shot gradually rising or high-angle downward shot gradually descending, smooth and regular movement, changing frame perspective, enhancing lens sophistication, suitable for character entrance, atmospheric setting, scene panorama display. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "人物出场、场景展示专用，提升画面高级感"
+      },
+      {
+        "title": "跟拍追踪镜（人物移动）",
+        "prompt": "Lens follows character movement trajectory throughout, closely matching character action rhythm, smooth position tracking, locking character subject without losing focus, strong sense of dynamics, suitable for running, chasing, escaping, and movement scenes. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "追逐、移动场景专用，强调动态感"
+      },
+      {
+        "title": "快速推镜（冲突爆发）",
+        "prompt": "Lens rapidly pushes forward, instantly focusing on character facial demeanor and hand actions, intensifying tension and oppressive feeling, suitable for quarrel confrontation, emotional outbreak, aggressive approach, action finale highlight shots. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "冲突、爆发场景专用，强化压迫感"
+      },
+      {
+        "title": "灵动手持镜（混乱失控）",
+        "prompt": "Slight realistic handheld shake, small natural jitter, simulating realistic live-action on-site feel, intensifying frame conflict sense, suitable for physical pulling, quarrel pushing, loss of control, panicked struggle forced interaction scenes. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "拉扯、争执、失控场景专用，增强临场感"
+      },
+      {
+        "title": "环绕运镜（紧张包围）",
+        "prompt": "Lens slowly rotates around character in orbit, continuously surrounding target body from shooting angle, intensifying tension, encirclement sense, and oppressive feeling, comprehensively displaying character expressions and body details. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "紧张对峙、包围场景专用"
+      },
+      {
+        "title": "甩镜切镜（极速转折）",
+        "prompt": "Lens abruptly and rapidly swipes horizontally to cut, clean and decisive without dragging, tight and explosive rhythm, suitable for combat transitions, confrontation power shifts, strong narrative outbreak moments. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "打斗、转场、爆发场景专用"
+      },
+      {
+        "title": "俯仰切换镜（高低压迫）",
+        "prompt": "Lens rapidly switches from low-angle upward to high-angle downward shot, dynamic perspective change, amplifying character status difference, power gap, and oppressive feeling, suitable for dominant suppression, condescending confrontation, body-type power disparity conflict scenes. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "力量差、身份差对峙场景专用"
+      },
+      {
+        "title": "虚实焦点运镜（情绪聚焦）",
+        "prompt": "Lens gradually blurs and refocuses, background progressively blurs, character subject gradually becomes clear and focused, visual center completely locks onto character demeanor, weakening sensory escape, amplifying emotional tension, creating highlight famous scenes, heartbreaking moments, ambiguous atmospheric shots. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "高光、虐心、暧昧场景专用，强化情绪张力"
+      },
+      {
+        "title": "慢动作运镜（高光细节）",
+        "prompt": "Full slow-motion elevated frame rate filming, slowing and extending action details, smooth and silky, precisely capturing eye gaze, mouth corners, hands, hair, tear traces, and accessory details, highlighting action highlights. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "高光动作、细节展示专用"
+      },
+      {
+        "title": "平移渐变转场（丝滑衔接）",
+        "prompt": "Lens uniformly moves horizontally, frame edges naturally transition, no interference or frame drops, silky connection between preceding and following shots, visually natural and comfortable, scene switching dialogue connection transitions, viewing experience natural and comfortable. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "场景转换专用，保证镜头衔接自然"
+      },
+      {
+        "title": "暗角收缩运镜（悬念压抑）",
+        "prompt": "Lens frame vignette slowly contracts inward, center frame focuses on subject, surroundings progressively darken, atmospheric sense oppressive and mysterious, creating series ending leaving suspense, low mood, dark化 groundwork, subplot closing shots. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "结尾、悬念、黑化场景专用"
+      },
+      {
+        "title": "光影流动运镜（温柔暧昧）",
+        "prompt": "Lens steady and static, camera distance light and shadow slowly flowing offset effect, soft light gentle movement, frame atmosphere delicate and rich, gentle gaze ambiguous, flashback killing, healing atmospheric shots. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "温柔、治愈、暧昧场景专用"
+      },
+      {
+        "title": "人物出场运镜",
+        "prompt": "Lens slowly pushes forward from empty shot, character gradually fixed entering frame, smooth and composed movement, focusing on character entrance moment, naturally carrying presence and atmospheric sense, suitable for protagonist, boss, villain highlight entrance shots. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "主角、大佬出场专用"
+      },
+      {
+        "title": "细节特写运镜",
+        "prompt": "Lens extremely close-range focuses on partial details, stable static slight tilt, precisely capturing eye gaze, mouth corners, tear traces, accessory details, hand actions, tear traces, panicked details, and cheek dynamics, amplifying slow expression and action tension, suitable for emotional writing, ambiguous atmospheric shots, conflict details, inertial linkage shots. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "微表情、细节特写专用"
+      },
+      {
+        "title": "压迫感低位仰拍",
+        "prompt": "Low-angle upward camera position, lens pushes upward from low angle, amplifying character physique and scene, extremely strong visual oppression, overwhelming dominance, suitable for boss, villain, strong character confrontation, suppressing opponent's highlight shots. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "霸气、压迫感场景专用"
+        },
+              {
+        "title": "破碎感高位俯拍",
+        "prompt": "High-angle overhead shot, the lens slowly pulls downward, the character remains centered in the frame, with spacious and desolate surroundings emphasizing loneliness, helplessness, emotional collapse, and heartbreak. Suitable for scenes of despair, failure, breakdown, loss, and emotional devastation. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "适合表现孤独、失意、崩溃、落寞和破碎感"
+      },
+      {
+        "title": "推拉组合动态镜",
+        "prompt": "The lens first slowly pushes in to focus on the character's expression, then gradually pulls back to reveal the entire environment. The push-and-pull rhythm is natural and compact, balancing detailed emotion with the overall scene, creating rich visual layers and a sophisticated cinematic feeling. Suitable for emotional progression, plot reversals, dramatic turning points, and key short-drama moments. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "适合情绪递进、剧情转折和名场面镜头"
+      },
+      {
+        "title": "穿透运镜",
+        "prompt": "Immersive camera movement through foreground obstructions such as windows, curtains, gauze, smoke, thin fabric, branches, or architectural gaps, gradually focusing on the character in the background. The scene has a strong sense of depth and immersion, with the visual focus locked on the character's emotional state. Suitable for indoor scenes, mysterious entrances, secret observation, intimate distance, confrontation, and suspenseful moments. Lens logic coherent, dynamic tension sufficient, suited to short drama shot rhythm, unified style without jumps.",
+        "note": "适合沉浸式视角、窥视感、神秘出场和近距离对峙"
+      },
+      {
+        "title": "环绕焦点双重运镜",
+        "prompt": "The lens slowly orbits around two characters while gently pushing forward, continuously switching between multiple angles. Fully present the spatial relationship, facial expressions, body language, and emotional tension between the two characters. Maintain visual focus on their interaction, suitable for intimate confrontation, close-distance tension, emotional entanglement, and high-energy two-person scenes. Smooth and seamless movement, coherent spatial relationship, unified visual style.",
+        "note": "适合双人互动、暧昧拉扯、亲密对峙和包围感场景"
+      },
+      {
+        "title": "第一视角主观运镜",
+        "prompt": "Pure first-person subjective camera, the viewpoint follows the character's line of sight and movement, with subtle natural camera motion and strong immersion. Suitable for confrontations, close contact, pulling, approaching, intimate interaction, pursuit, and escape scenes. Maintain continuous lens logic, stable spatial relationships, natural character movement, and strong presence.",
+        "note": "适合增强代入感和临场感，让观众直接进入角色视角"
+      },
+      {
+        "title": "碎片闪回运镜",
+        "prompt": "The lens rapidly switches between fragmented flashback images through brief motion-blur transitions, short fast connections, and visual fragments. The rhythm is compact and emotionally charged, suitable for memories, past events, reversals, emotional trauma, and plot revelations. Maintain coherent visual motifs and color grading between memory fragments, avoiding confusing spatial jumps.",
+        "note": "适合回忆、穿插、反转和重要往事揭示"
+      },
+      {
+        "title": "镜头围绕双人主体",
+        "prompt": "The lens slowly orbits around two characters, switching viewpoints from multiple angles and fully presenting their physical distance, body language, facial expressions, and emotional tension. The movement emphasizes closeness, restraint, confrontation, and emotional entanglement, suitable for intimate scenes, close-distance arguments, romantic tension, and dramatic confrontations. Smooth camera movement, coherent spatial logic, strong dynamic tension, unified visual style.",
+        "note": "适合双人贴身互动、暧昧拉扯和近距离对峙"
+      },
+      {
+        "title": "甩镜极速切换",
+        "prompt": "The lens quickly swipes horizontally with a short, powerful motion blur transition, rapidly switching between characters, actions, or spatial directions. The cut is clean and decisive, with a tight and explosive rhythm, suitable for combat transitions, rapid reactions, power shifts, sudden attacks, and dramatic action reversals. Maintain clear movement direction and character continuity.",
+        "note": "适合打斗转场、动作衔接和突然反转"
+      },
+      {
+        "title": "低位仰拍转高位俯拍",
+        "prompt": "The lens rapidly transitions from a low-angle upward shot to a high-angle overhead shot. The changing perspective exaggerates status differences, power gaps, height differences, and oppressive tension between characters. Suitable for dominant suppression, condescending confrontation, overwhelming attacks, and scenes showing a dramatic reversal of power. Maintain continuous action and stable spatial relationships.",
+        "note": "适合表现强弱转换、身份压制与力量差距"
+      },
+      {
+        "title": "通用运镜后缀",
+        "prompt": "Coherent camera logic, sufficient dynamic tension, suitable for short-drama shot rhythm, consistent visual style without sudden changes, stable character positions, continuous movement direction, natural camera motion, no abrupt cuts, no spatial confusion, no sudden character displacement.",
+        "note": "可附加在任意运镜提示词结尾，统一镜头质量"
+      },
+            {
+        "title": "通用运镜后缀",
+        "prompt": "Coherent camera logic, sufficient dynamic tension, suitable for short-drama shot rhythm, consistent visual style without sudden changes, stable character positions, continuous movement direction, natural camera motion, no abrupt cuts, no spatial confusion, no sudden character displacement.",
+        "note": "可附加在任意运镜提示词结尾，统一镜头质量"
+      }
+    ]
+  },
+  "常用网站": {
+    "画师查询": [
+      {
+        "title": "AIMDS (AI画师魔导书)",
+        "prompt": "https://aimds.top/home",
+        "note": "可视化AI画师魔导书，方便在线查询画风与Tag。"
+      },
+      {
+        "title": "NAX.MOE (NovelAI Tag库)",
+        "prompt": "https://nax.moe/",
+        "note": "非常全面的NovelAI Tag及画师整理网站。"
+      },
+      {
+        "title": "Magic Tag (魔导绪论)",
+        "prompt": "https://magic-tag.netlify.app/",
+        "note": "精美的在线魔导书，提供优质提示词与元素组合查询。"
+      },
+      {
+        "title": "NAX 画师图鉴 v4.5 (特定页)",
+        "prompt": "https://nax.moe/?gallery=danbooru-artist-tags-2-v4.5&page=-6",
+        "note": "直接定位到特定页面的画师图鉴，直观展示不同画师风格效果。"
+      }
+    ]
+  }
+}
